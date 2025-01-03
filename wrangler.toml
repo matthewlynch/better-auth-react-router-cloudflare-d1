@@ -21,8 +21,7 @@ directory = "./build/client"
 # These vars apply to both development & production
 [vars]
 # Values defined in .dev.vars will overwrite values here
-BETTER_AUTH_URL="http://localhost:5173"
-OAUTH_GITHUB_CLIENT_ID=""
+BETTER_AUTH_URL="https://better-auth-react-router-cloudflare-d1.mattlynch.workers.dev"
 CLOUDFLARE_ACCOUNT_ID=""
 CLOUDFLARE_DATABASE_ID=""
 
