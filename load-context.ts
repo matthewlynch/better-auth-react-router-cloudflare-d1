@@ -1,7 +1,7 @@
 import type { PlatformProxy } from "wrangler";
 import { drizzle } from "drizzle-orm/d1";
 
-import * as schema from "./database/schema";
+import { schema } from "./database/schema";
 
 // `Env` is defined in worker-configuration.d.ts
 
