@@ -1,0 +1,11 @@
+.DS_Store
+/node_modules/
+
+# React Router
+/.react-router/
+/build/
+
+# Cloudflare
+.dev.vars
+.mf
+.wrangler

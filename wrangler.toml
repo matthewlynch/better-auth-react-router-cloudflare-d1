@@ -1,0 +1,33 @@
+#:schema node_modules/wrangler/config-schema.json
+
+# Visit https://developers.cloudflare.com/workers/wrangler/configuration/ to see full list of options for this file
+
+# This will be the name of your worker in the Cloudflare Dashboard
+name = "better-auth-react-router-cloudflare-d1"
+# Compatibility date docs: https://developers.cloudflare.com/workers/configuration/compatibility-dates/
+compatibility_date = "2024-11-18"
+# See https://developers.cloudflare.com/workers/configuration/compatibility-flags/ for full list of flags
+compatibility_flags = ["nodejs_compat"]
+# Entry point for the worker app
+main = "./build/server/worker.js"
+
+[build]
+command = "pnpm build"
+
+[assets]
+# https://developers.cloudflare.com/workers/static-assets/binding/ - these are the static assets served to clients
+directory = "./build/client"
+
+# These vars apply to both development & production
+[vars]
+# Values defined in .dev.vars will overwrite values here
+BETTER_AUTH_URL="http://localhost:5173"
+OAUTH_GITHUB_CLIENT_ID=""
+CLOUDFLARE_ACCOUNT_ID=""
+CLOUDFLARE_DATABASE_ID=""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "better-auth-example"
+database_id = "07ec7bea-f5c0-4e14-a646-d83197cb9c43"
+migrations_dir = "drizzle"

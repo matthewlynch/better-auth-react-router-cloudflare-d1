@@ -1,0 +1,59 @@
+{
+  "name": "better-auth-react-router-cloudflare-d1",
+  "private": true,
+  "description": "Better Auth + React Router Cloudflare D1 template",
+  "repository": {
+    "url": "github:matthewlynch/better-auth-react-router-cloudflare-d1"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "build": "NODE_ENV=production react-router build",
+    "db:generate": "dotenvx run -f .dev.vars -- drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply --local DB",
+    "db:migrate:production": "dotenvx run -f .dev.vars -- drizzle-kit migrate",
+    "db:studio": "LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
+    "db:studio:production": "dotenvx run -f .dev.vars -- drizzle-kit studio",
+    "db:warm": "npx wrangler d1 execute better-auth-example --command \"SELECT * FROM sqlite_master where type='table'\"",
+    "deploy:production": "wrangler deploy",
+    "dev": "react-router dev",
+    "deploy:version": "wrangler versions upload",
+    "start": "wrangler dev",
+    "typecheck": "react-router typegen && tsc",
+    "typegen": "wrangler types",
+    "auth:db:generate": "LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) dotenvx run -f .dev.vars -- npx @better-auth/cli generate --output=\"database/auth-schema.ts\" --y && prettier database/auth-schema.ts --write"
+  },
+  "dependencies": {
+    "@noxharmonium/kysely-d1": "0.4.0",
+    "@react-router/node": "^7.1.1",
+    "@react-router/serve": "^7.1.1",
+    "better-auth": "^1.1.8",
+    "drizzle-orm": "~0.36.4",
+    "isbot": "^5.1.19",
+    "kysely": "^0.27.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241224.0",
+    "@dotenvx/dotenvx": "^1.32.0",
+    "@react-router/dev": "^7.1.1",
+    "@types/node": "^20.17.10",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "better-sqlite3": "^11.7.0",
+    "dotenv-cli": "^7.4.4",
+    "drizzle-kit": "~0.28.1",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vite-tsconfig-paths": "^5.1.4",
+    "wrangler": "^3.99.0"
+  },
+  "packageManager": "pnpm@9.15.1+sha512.1acb565e6193efbebda772702950469150cf12bcc764262e7587e71d19dc98a423dff9536e57ea44c49bdf790ff694e83c27be5faa23d67e0c033b583be4bfcf"
+}
