@@ -28,7 +28,7 @@
     "@noxharmonium/kysely-d1": "0.4.0",
     "@react-router/node": "^7.1.1",
     "@react-router/serve": "^7.1.1",
-    "better-auth": "^1.1.16",
+    "better-auth": "^1.1.21",
     "drizzle-orm": "~0.36.4",
     "isbot": "^5.1.19",
     "kysely": "^0.27.5",
